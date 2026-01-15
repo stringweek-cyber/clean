@@ -14,6 +14,7 @@
             --primary-color: #007bff;
             --secondary-color: #2c3e50;
             --accent-color: #e67e22;
+            --sample-btn-color: #00b894; /* New Color for Sample Buttons (Teal) */
             --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
         }
 
@@ -239,6 +240,18 @@
             box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
         }
 
+        /* NEW STYLE: Sample Button */
+        .sample-btn {
+            background-color: var(--sample-btn-color);
+            color: #fff;
+        }
+
+        .sample-btn:hover {
+            background-color: #00a383; /* Darker shade for hover */
+            box-shadow: 0 4px 6px rgba(0, 184, 148, 0.3);
+        }
+
+
         .action-btn svg {
             margin-left: 6px; 
             width: 14px; 
@@ -281,11 +294,12 @@
             .item-row {
                 flex-direction: column;
                 align-items: flex-start;
+                gap: 8px; /* Added gap for mobile stacking */
             }
             .item-info {
                 flex-direction: column;
                 gap: 5px; 
-                margin-bottom: 10px; 
+                margin-bottom: 5px; 
                 width: 100%;
                 min-width: auto;
                 max-width: 100%;
@@ -313,22 +327,22 @@
             }
         }
         .download-btn {
-    background-color: #6f42c1 !important;
-    color: white !important;
-    border: 1px solid #6f42c1 !important;
-}
+            background-color: #6f42c1 !important;
+            color: white !important;
+            border: 1px solid #6f42c1 !important;
+        }
 
-.download-btn:hover {
-    background-color: #59359a !important;
-    border-color: #59359a !important;
-}
+        .download-btn:hover {
+            background-color: #59359a !important;
+            border-color: #59359a !important;
+        }
 
-.download-icon-svg {
-    width: 14px;
-    height: 14px;
-    fill: currentColor;
-    margin-left: 6px;
-}
+        .download-icon-svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+            margin-left: 6px;
+        }
     </style>
 </head>
 <body>
@@ -411,9 +425,27 @@
                 title: "크롬 확장 프로그램",
                 items: [
                     { title: "<span class=\"highlight-red\">크롬 확장</span> 프로그램", desc: "", btn: "크롬 웹스토어", link: "https://chromewebstore.google.com/?pli=1" },
-                    { title: "", desc: "", btn: "QR 코드 링크", link: "https://chromewebstore.google.com/detail/qr-code-generator/afpbjjgbdimpioenaedcjgkaigggcdpp" },
-                    { title: "", desc: "", btn: "드래그프리 링크", link: "https://chromewebstore.google.com/detail/dragfree-mouse-drag-right/cnfngpgfjllafbghaimjcmailafcdhod" },
-                    { title: "", desc: "", btn: "유튜브 요약 링크", link: "https://chromewebstore.google.com/detail/livewiki-youtube-summariz/gaaicdedebppdnadcdddckdmccfejjli" },
+                    { 
+                        title: "", 
+                        desc: "", 
+                        leftBtn: { text: "루틴웹앱 샘플", link: "https://stringweek-cyber.github.io/time/" },
+                        btn: "QR 코드 링크", 
+                        link: "https://chromewebstore.google.com/detail/qr-code-generator/afpbjjgbdimpioenaedcjgkaigggcdpp" 
+                    },
+                    { 
+                        title: "", 
+                        desc: "", 
+                        leftBtn: { text: "골든가사 샘플", link: "https://blog.naver.com/pjj1219/224121010491" },
+                        btn: "드래그프리 링크", 
+                        link: "https://chromewebstore.google.com/detail/dragfree-mouse-drag-right/cnfngpgfjllafbghaimjcmailafcdhod" 
+                    },
+                    { 
+                        title: "", 
+                        desc: "", 
+                        leftBtn: { text: "김상욱교수님 AI 샘플", link: "https://www.youtube.com/watch?v=U4fwugv9nYY" },
+                        btn: "유튜브 요약 링크", 
+                        link: "https://chromewebstore.google.com/detail/livewiki-youtube-summariz/gaaicdedebppdnadcdddckdmccfejjli" 
+                    },
                     { title: "", desc: "", btn: "Enhancer 유튜브 조절 링크", link: "https://chromewebstore.google.com/detail/enhancer-for-youtube/ponfpcnoihfmfllpaingbgckeeldkhle" },
                     { title: "", desc: "", btn: "구글 번역 링크", link: "https://chromewebstore.google.com/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb" },
                     { title: "", desc: "", btn: "한국어 맞춤법 검사기 링크", link: "https://chromewebstore.google.com/detail/%ED%95%9C%EA%B5%AD%EC%96%B4-%EB%A7%9E%EC%B6%A4%EB%B2%95-%EA%B2%80%EC%82%AC%EA%B8%B0/jglndaljomjcobaaoohfccecjcekcfgo" },
@@ -496,6 +528,31 @@
 
                 row.appendChild(info);
 
+                // NEW CODE: Handle 'leftBtn' if it exists
+                if (item.leftBtn) {
+                    const lBtn = document.createElement('a');
+                    lBtn.className = 'action-btn sample-btn'; // Use new sample-btn class
+                    lBtn.innerHTML = item.leftBtn.text; // Set Text
+                    lBtn.href = item.leftBtn.link;
+                    lBtn.target = "_blank";
+                    
+                    // Add external link icon for consistency
+                    const iconSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                    iconSvg.setAttribute("width", "14");
+                    iconSvg.setAttribute("height", "14");
+                    iconSvg.setAttribute("viewBox", "0 0 24 24");
+                    iconSvg.setAttribute("fill", "none");
+                    iconSvg.setAttribute("stroke", "currentColor");
+                    iconSvg.setAttribute("stroke-width", "2.5");
+                    iconSvg.setAttribute("stroke-linecap", "round");
+                    iconSvg.setAttribute("stroke-linejoin", "round");
+                    iconSvg.style.marginLeft = "6px";
+                    iconSvg.innerHTML = '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>';
+                    
+                    lBtn.appendChild(iconSvg);
+                    row.appendChild(lBtn);
+                }
+
                 if (item.btn) {
                     let btn;
                     
@@ -542,7 +599,7 @@
                     }
                     row.appendChild(btn);
                 }
- if (item.btnHtml) {
+                if (item.btnHtml) {
                     const div = document.createElement('div');
                     div.innerHTML = item.btnHtml;
                     row.appendChild(div.firstChild);
@@ -556,26 +613,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
