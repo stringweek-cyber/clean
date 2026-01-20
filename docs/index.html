@@ -460,14 +460,19 @@
         <div class="page-container" id="page-25">
             <div class="page-number">Page 25</div>
             <img src="025.jpg" alt="Page 25: Everything / 타이머 (이미지)">
-            <!-- 37쪽에서 이동한 음악 플레이어 관련 버튼 + 음표 이미지 다운로드 -->
+            <!-- 버튼들은 27쪽으로 이동함 -->
+        </div>
+        
+        <div class="page-container" id="page-26">
+            <div class="page-number">Page 26</div>
+            <img src="026.jpg" alt="Page 26: 작업표시줄에 크롬 계정 고정">
+             <!-- 27쪽에서 이동한 시계 관련 버튼 + 큰시계 이미지 다운로드 -->
             <div class="button-container">
-                <a href="https://www.youtube.com/watch?v=4nVazDf6ORc&list=RD4nVazDf6ORc&start_radio=1" target="_blank" class="btn link-btn">아이유노래 링크</a>
-                <a href="https://stringweek-cyber.github.io/music/" target="_blank" class="btn link-btn">음악 플레이어(bit.ly/노래틀기) 링크</a>
-                <!-- 단순 링크로 변경 (CORS 문제 방지) -->
-             <a href="./image_note.png" download="image_note.png" class="btn download-btn">
-                    음표 이미지 다운로드
-                    <svg xmlns="http://www.w3.org/2000/svg" class="download-icon-svg" viewBox="0 0 16 16">
+                 <a href="https://stringweek-cyber.github.io/timer/" target="_blank" class="btn link-btn">큰시계(bit.ly/큰시계) 링크</a>
+                 <!-- 단순 링크로 변경 (CORS 문제 방지) -->
+                <a href="./image_clock.png" download="image_clock.png" class="btn download-btn">
+                     큰시계 이미지 다운로드
+                     <svg xmlns="http://www.w3.org/2000/svg" class="download-icon-svg" viewBox="0 0 16 16">
                         <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
                         <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
                     </svg>
@@ -475,21 +480,17 @@
             </div>
         </div>
         
-        <div class="page-container" id="page-26">
-            <div class="page-number">Page 26</div>
-            <img src="026.jpg" alt="Page 26: 작업표시줄에 크롬 계정 고정">
-        </div>
-        
         <div class="page-container" id="page-27">
             <div class="page-number">Page 27</div>
             <img src="027.jpg" alt="Page 27: 작업 표시줄 구분선 만들기 (이미지)">
-            <!-- 25쪽에서 이동한 시계 관련 버튼 + 큰시계 이미지 다운로드 -->
+             <!-- 25쪽에서 이동한 음악 플레이어 관련 버튼 + 음표 이미지 다운로드 -->
             <div class="button-container">
-                 <a href="https://stringweek-cyber.github.io/timer/" target="_blank" class="btn link-btn">큰시계(bit.ly/큰시계) 링크</a>
-                 <!-- 단순 링크로 변경 (CORS 문제 방지) -->
-                <a href="./image_clock.png" download="image_clock.png" class="btn download-btn">
-                     큰시계 이미지 다운로드
-                     <svg xmlns="http://www.w3.org/2000/svg" class="download-icon-svg" viewBox="0 0 16 16">
+                <a href="https://www.youtube.com/watch?v=4nVazDf6ORc&list=RD4nVazDf6ORc&start_radio=1" target="_blank" class="btn link-btn">아이유노래 링크</a>
+                <a href="https://stringweek-cyber.github.io/music/" target="_blank" class="btn link-btn">음악 플레이어(bit.ly/노래틀기) 링크</a>
+                <!-- 단순 링크로 변경 (CORS 문제 방지) -->
+             <a href="./image_note.png" download="image_note.png" class="btn download-btn">
+                    음표 이미지 다운로드
+                    <svg xmlns="http://www.w3.org/2000/svg" class="download-icon-svg" viewBox="0 0 16 16">
                         <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
                         <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
                     </svg>
@@ -506,6 +507,10 @@
         <div class="page-container" id="page-29">
             <div class="page-number">Page 29</div>
             <img src="029.jpg" alt="Page 29: 시작 메뉴 화면">
+             <!-- 37쪽에서 이동한 shell:programs 버튼 -->
+            <div class="button-container">
+                <button class="btn copy-btn" onclick="copyToClipboard(this, 'shell:programs')"><code>shell:programs</code> 복사</button>
+            </div>
         </div>
         
         <div class="page-container" id="page-30">
@@ -517,7 +522,13 @@
         <div class="page-container" id="page-31">
             <div class="page-number">Page 31</div>
             <img src="031.jpg" alt="Page 31: 시작 앱스토어 설치">
-            <!-- 30쪽에서 이동해 온 버튼들 (순서: 아이스크림-티셀파-비바샘-Everything) -->
+            <!-- 버튼들은 32쪽으로 이동함 -->
+        </div>
+        
+        <div class="page-container" id="page-32">
+            <div class="page-number">Page 32</div>
+            <img src="032.jpg" alt="Page 32: 추천 앱스토어 앱 (이미지)">
+             <!-- 31쪽에서 이동해 온 버튼들 (순서: 아이스크림-티셀파-비바샘-Everything) -->
             <div class="button-container">
                 <a href="https://toolkit.i-scream.co.kr/" target="_blank" class="btn link-btn">아이스크림 툴킷 링크</a>
                 <a href="https://tbag.tsherpa.co.kr/?from=" target="_blank" class="btn link-btn">티셀파 판서 링크</a>
@@ -526,16 +537,16 @@
             </div>
         </div>
         
-        <div class="page-container" id="page-32">
-            <div class="page-number">Page 32</div>
-            <img src="032.jpg" alt="Page 32: 추천 앱스토어 앱 (이미지)">
-            <!-- 버튼은 40쪽으로 이동 -->
-        </div>
-        
         <div class="page-container" id="page-33">
             <div class="page-number">Page 33</div>
             <img src="033.jpg" alt="Page 33: 시작 화면에 고정 안되는 것들 (이미지)">
-            <!-- 27쪽에서 이동한 구분선 관련 버튼 + 구분선 이미지 다운로드 -->
+            <!-- 버튼들은 34쪽으로 이동함 -->
+        </div>
+        
+        <div class="page-container" id="page-34">
+            <div class="page-number">Page 34</div>
+            <img src="034.jpg" alt="Page 34: 시작 앱">
+            <!-- 33쪽에서 이동한 구분선 관련 버튼 + 구분선 이미지 다운로드 -->
             <div class="button-container">
                 <!-- 단순 링크로 변경 (CORS 문제 방지) -->
              <a href="./image_divider.ico" download="image_divider.ico" class="btn download-btn">
@@ -547,11 +558,6 @@
                 </a>
                 <button class="btn copy-btn" onclick='copyToClipboard(this, "%windir%\\System32\\cmd.exe /c \"echo 1\"")'><code>%windir%\System32\cmd.exe /c "echo 1"</code> 복사</button>
             </div>
-        </div>
-        
-        <div class="page-container" id="page-34">
-            <div class="page-number">Page 34</div>
-            <img src="034.jpg" alt="Page 34: 시작 앱">
         </div>
         
         <div class="page-container" id="page-35">
@@ -568,10 +574,7 @@
         <div class="page-container" id="page-37">
             <div class="page-number">Page 37</div>
             <img src="037.jpg" alt="Page 37: 음악 플레이어 고정하기 (이미지)">
-            <!-- 28쪽에서 이동한 shell:programs 버튼 -->
-            <div class="button-container">
-                <button class="btn copy-btn" onclick="copyToClipboard(this, 'shell:programs')"><code>shell:programs</code> 복사</button>
-            </div>
+            <!-- 버튼은 29쪽으로 이동함 -->
         </div>
         
         <div class="page-container" id="page-38">
