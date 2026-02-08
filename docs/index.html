@@ -268,6 +268,57 @@
             background-color: #bbbbbb; 
             opacity: 1; 
         }
+
+        /* --- 패스워드 모달 스타일 --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 320px;
+            width: 90%;
+        }
+        .modal-box h3 {
+            margin-top: 0;
+            color: #333;
+            font-size: 18px;
+        }
+        .modal-box input {
+            width: 100%;
+            padding: 10px;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+            text-align: center;
+        }
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .modal-btn {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .modal-confirm { background: #007bff; color: white; }
+        .modal-cancel { background: #eee; color: #666; }
+        .modal-error { color: #dc3545; font-size: 12px; margin-top: 5px; display: none; }
     </style>
 </head>
 <body>
@@ -397,7 +448,7 @@
     <img src="015.jpg" alt="Page 15: 로켓독 이미지 변경">
     <div class="button-container">
         <a href="https://punklabs.com/rocketdock" target="_blank" class="btn link-btn">RocketDock 링크</a>
-        <a href="./RocketDock-v1.3.5.exe" download="RocketDock-v1.3.5.exe" class="btn download-btn">
+        <a href="javascript:void(0)" onclick="openDownloadModal('./RocketDock-v1.3.5.exe', 'RocketDock-v1.3.5.exe')" class="btn download-btn">
             RocketDock-v1.3.5.exe 다운로드
             <svg xmlns="http://www.w3.org/2000/svg" class="download-icon-svg" viewBox="0 0 16 16">
                 <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
@@ -591,6 +642,7 @@
                 <a href="https://apps.microsoft.com/detail/9wzdncrfjbbg?hl=ko-kr&gl=KR&ocid=pdpshare" target="_blank" class="btn link-btn">카메라 링크</a>
                 <a href="https://apps.microsoft.com/detail/XP8LVTC3LTSFN3?hl=ko-kr&gl=KR&ocid=pdpshare" target="_blank" class="btn link-btn">4K 비디오 다운로더 링크</a>
                 <a href="https://apps.microsoft.com/detail/9pm860492szd?hl=ko&gl=KR&ocid=pdpshar" target="_blank" class="btn link-btn">MS PC Manager 링크</a>
+                <a href="https://apps.microsoft.com/detail/9pm860492szd?hl=ko&gl=KR&ocid=pdpshar" target="_blank" class="btn link-btn">MS PC Manager 링크</a>
                 <a href="https://apps.microsoft.com/detail/9p1j8s7ccwwt?hl=ko&gl=KR&ocid=pdpsharee" target="_blank" class="btn link-btn">Clipchamp 링크</a>
                 <a href="https://apps.microsoft.com/detail/xp89dcgq3k6vld?hl=ko&gl=KR&ocid=pdpshare" target="_blank" class="btn link-btn">PowerToys 링크</a>
                 <a href="https://apps.microsoft.com/detail/9P1WXPKB68KX?hl=neutral&gl=KR&ocid=pdpshare" target="_blank" class="btn link-btn">Snipaste 링크</a>
@@ -618,13 +670,63 @@
         
     </div>
 
+    <!-- 패스워드 입력 모달 -->
+    <div id="pwModal" class="modal-overlay">
+        <div class="modal-box">
+            <h3>비밀번호 확인</h3>
+            <p style="font-size: 14px; color: #666;">다운로드를 위해 비밀번호를 입력하세요.</p>
+            <input type="password" id="pwInput" placeholder="비밀번호 입력">
+            <div id="pwError" class="modal-error">비밀번호가 올바르지 않습니다.</div>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-cancel" onclick="closeDownloadModal()">취소</button>
+                <button class="modal-btn modal-confirm" onclick="confirmDownload()">확인</button>
+            </div>
+        </div>
+    </div>
+
     <footer style="text-align: center; padding: 40px 20px 10px; font-size: 13px; color: #888;">
-        <p>© 2025. All rights reserved. 본 강의 자료의 저작권은 저작권자에게 있으며, 무단 전재 및 재배포를 금합니다.</p>
+        <p>© 2026. All rights reserved. 본 강의 자료의 저작권은 저작권자에게 있으며, 무단 전재 및 재배포를 금합니다.</p>
     </footer>
 
     <button id="scrollTopBtn">맨 위로 ▲</button>
 
     <script>
+        let currentDownloadUrl = '';
+        let currentDownloadName = '';
+
+        function openDownloadModal(url, name) {
+            currentDownloadUrl = url;
+            currentDownloadName = name;
+            document.getElementById('pwModal').style.display = 'flex';
+            document.getElementById('pwInput').value = '';
+            document.getElementById('pwError').style.display = 'none';
+            document.getElementById('pwInput').focus();
+        }
+
+        function closeDownloadModal() {
+            document.getElementById('pwModal').style.display = 'none';
+        }
+
+        function confirmDownload() {
+            const input = document.getElementById('pwInput').value;
+            if (input === '2025') {
+                const link = document.createElement('a');
+                link.href = currentDownloadUrl;
+                link.download = currentDownloadName;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                closeDownloadModal();
+            } else {
+                document.getElementById('pwError').style.display = 'block';
+            }
+        }
+
+        // 엔터키 지원
+        document.getElementById('pwInput')?.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') confirmDownload();
+        });
+
         // (file://) 환경에서도 복사되도록 textarea를 이용한 fallback 함수 포함
         function copyToClipboard(buttonElement, textToCopy) {
             
@@ -680,7 +782,7 @@
                     fallbackCopy(textToCopy).then(() => {
                         showSuccess(buttonElement);
                     }).catch(() => {
-                        alert("클립보드 복사에 실패했습니다.");
+                        // alert 대신 에러 로직 사용 가능 (여기서는 콘솔 유지)
                     });
                 });
             } else {
@@ -688,7 +790,7 @@
                 fallbackCopy(textToCopy).then(() => {
                     showSuccess(buttonElement);
                 }).catch(() => {
-                    alert("클립보드 복사에 실패했습니다.");
+                    // 에러 처리
                 });
             }
         }
