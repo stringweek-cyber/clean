@@ -295,6 +295,21 @@
             bottom: 50px;
         }
 
+        /* 크롬 주소표시줄 검색 설정 텍스트 특화 스타일 */
+        .search-setting-row .item-title {
+            font-size: 15px !important;
+            color: #666 !important;
+            font-weight: 400 !important;
+            min-width: auto !important;
+            white-space: nowrap;
+        }
+        @media (min-width: 601px) {
+            .search-setting-row .item-info {
+                margin-left: auto;
+                flex: none;
+            }
+        }
+
         @media (max-width: 768px) {
             .item-info {
                 min-width: 0; 
@@ -431,7 +446,7 @@
                     { title: "", desc: "", btn: "MS PC Manager 링크", link: "https://apps.microsoft.com/detail/9pm860492szd?hl=ko&gl=KR&ocid=pdpshar" },
                     { title: "", desc: "", btn: "Power toys 링크", link: "https://apps.microsoft.com/detail/xp89dcgq3k6vld?hl=ko&gl=KR&ocid=pdpshare" },
                     { title: "", desc: "", btn: "Snipaste 링크", link: "https://apps.microsoft.com/detail/9P1WXPKB68KX?hl=neutral&gl=KR&ocid=pdpshare" },
-                                    ]
+                                                ]
             },
             {
                 title: "크롬 확장 프로그램",
@@ -471,12 +486,14 @@
                         desc: "설정 → 검색엔진 → 사이트 검색 추가 (검색엔진 → 사이트)"
                     },
                     { 
-                        title: "", desc: "", 
+                        title: "유튜브 주소표시줄 검색", desc: "", 
+                        rowClass: "search-setting-row",
                         btn: "https://www.youtube.com/results?search_query=%s 복사", 
                         link: "https://www.youtube.com/results?search_query=%s" 
                     },
                     { 
-                        title: "", desc: "", 
+                        title: "지마켓 주소표시줄 검색", desc: "", 
+                        rowClass: "search-setting-row",
                         btn: "https://www.gmarket.co.kr/n/search?keyword=%s 복사", 
                         link: "https://www.gmarket.co.kr/n/search?spm=gmktpc.home.searchtop.dsearchbox.1fbf486afApwSZ&keyword=%s" 
                     }
@@ -498,7 +515,7 @@
             "아이스크림 툴킷", 
             "비바샘 스마트 도구", 
             "티셀파 판서 링크",
-            "크롬 웹스토어"
+            "크롬 웹스토"
         ];
 
         const container = document.getElementById('app-container');
@@ -535,7 +552,7 @@
 
             cat.items.forEach(item => {
                 const row = document.createElement('div');
-                row.className = 'item-row';
+                row.className = 'item-row' + (item.rowClass ? ' ' + item.rowClass : '');
 
                 const info = document.createElement('div');
                 info.className = 'item-info';
