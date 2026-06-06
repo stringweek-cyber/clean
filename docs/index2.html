@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    
     <style>
         /* CSS 초기화 및 변수 설정 */
         :root {
@@ -385,7 +386,7 @@
     </header>
 
     <main id="app-container">
-        </main>
+    </main>
 
     <div id="toast">클립보드에 복사되었습니다!</div>
 
@@ -400,8 +401,15 @@
                     { title: "", desc: "", btn: "JPG를 ICO로 변환 사이트 (Convertio) 링크", link: "https://convertio.co/kr/" },
                     { title: "바탕화면 폴더 고정 프로그램<span class=\"highlight-red\">(로켓독)</span>", desc: "결제 유도 클릭 NO NO!", btn: "로켓독 다운로드 링크", link: "https://punklabs.com/rocketdock" },
                     { title: "", desc: "", btnHtml: '<a href="./RocketDock-v1.3.5.exe" download="RocketDock-v1.3.5.exe" class="action-btn download-btn">RocketDock-v1.3.5.exe 다운로드 <svg xmlns="http://www.w3.org/2000/svg" class="download-icon-svg" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg></a>'},
-                    { title: "", desc: "바탕화면 우클릭 <바로가기> 만들기 → 복붙+한 칸 공란+https://~ 입력 → 드래그해 로켓독에 넣기", btn: "로켓독에 엣지 바로가기 항목위치 복사", link: "\"C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe\"" }
-                
+                    { title: "", desc: "바탕화면 우클릭 <바로가기> 만들기 → 복붙+한 칸 공란+https://~ 입력 → 드래그해 로켓독에 넣기", btn: "로켓독에 엣지 바로가기 항목위치 복사", link: "\"C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe\"" },
+                    
+                    // 새롭게 추가된 네이버 웨일 설명 및 복사 버튼 항목
+                    { 
+                        title: "", 
+                        desc: "위 방식과 동일하게 바로가기 생성 후 로켓독에 드래그\n로켓독 아이콘 우클릭 → 아이콘 설정 → 링크 위치 에 (x86) 삭제하기", 
+                        btn: "로켓독에 네이버웨일 바로가기 항목위치 복사", 
+                        link: "\"C:\\Program Files\\Naver\\Naver Whale\\Application\\whale.exe\"" 
+                    }
                 ]
             },
             {
@@ -446,7 +454,7 @@
                     { title: "", desc: "", btn: "MS PC Manager 링크", link: "https://apps.microsoft.com/detail/9pm860492szd?hl=ko&gl=KR&ocid=pdpshar" },
                     { title: "", desc: "", btn: "Power toys 링크", link: "https://apps.microsoft.com/detail/xp89dcgq3k6vld?hl=ko&gl=KR&ocid=pdpshare" },
                     { title: "", desc: "", btn: "Snipaste 링크", link: "https://apps.microsoft.com/detail/9P1WXPKB68KX?hl=neutral&gl=KR&ocid=pdpshare" },
-                                                ]
+                                                                ]
             },
             {
                 title: "크롬 확장 프로그램",
@@ -515,7 +523,7 @@
             "아이스크림 툴킷", 
             "비바샘 스마트 도구", 
             "티셀파 판서 링크",
-            "크롬 웹스토"
+            "크롬 웹스토어" // 오타를 바르게 교정하였습니다.
         ];
 
         const container = document.getElementById('app-container');
@@ -571,7 +579,7 @@
 
                 row.appendChild(info);
 
-                // PINPOINT EDIT: Support multiple left buttons
+                // Support multiple left buttons
                 const leftButtonsData = item.leftBtns || (item.leftBtn ? [item.leftBtn] : []);
                 
                 leftButtonsData.forEach(lBtnData => {
